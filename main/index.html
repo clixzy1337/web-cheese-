@@ -1,434 +1,108 @@
 <html class="dark"><head>
     <style>
+        @font-face {
+            font-family: Poppins-Regular;
+            src: url(../fonts/poppins/Poppins-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: Poppins-Bold;
+            src: url(../fonts/poppins/Poppins-Bold.ttf);
+        }
+
         * {
-            box-sizing: border-box;
-            user-select: none;
-            -webkit-user-drag: none;
-            user-drag: none;
-            -ms-user-select: none;
-        }
-        
-        html * {
-            transition: all 750ms !important;
-            transition-delay: 0 !important;
-        }
-
-        html {
-            --color-body: white;
-            --border-inner: #e4e4e4;
-            --border-mid: #e8e8e8;
-            --border-outer: #eeeeee;
-            --bottom-line: #e4e4e4;
-            --top-line: #e4e4e4;
-            --speaker: #efefef;
-            --camera: #efefef;
-            --shadow: #8a8a8a;
-            --text: #1f1f1f;
-            --label: black;
-            --button: white;
-        }
-
-        html.dark {
-            --color-body: #0b0b0b;
-            --border-inner: #1f1f1f;
-            --border-mid: #191919;
-            --border-outer: #111111;
-            --bottom-line: #1f1f1f;
-            --top-line: #1f1f1f;
-            --speaker: #101010;
-            --camera: #101010;
-            --shadow: #111111;
-            --text: #ffffff1f;
-            --label: white;
-            --button: #1a1a1a;
-        }
-
-        html .trigger {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            background: #111111;
-            background-image: url("https://jssecrets.com/wp-content/uploads/2023/01/moon.svg");
-            background-size: 28px;
-            background-position: center center;
-            background-repeat: no-repeat;
-            position: absolute;
-            right: 3%;
-            bottom: 4%;
-            z-index: 1;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease-out;
-        }
-
-        html .trigger::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #111111;
-            transform: translateZ(-1px);
-            transition: all 0.5s ease-out;
-        }
-
-        html .trigger:hover {
-            border: 1px solid #333;
-        }
-
-        html.dark {
-            animation: toBlack 0.7s both;
-        }
-
-        html.dark .trigger {
-            background-image: url("https://jssecrets.com/wp-content/uploads/2023/01/sun.svg");
-        }
-
-        @keyframes toBlack {
-            0% {
-                background-color: #f5f5f5;
-            }
-
-            90% {
-                background-color: #f5f5f5;
-            }
-
-            100% {
-                background-color: #111111;
-            }
-        }
-
-        html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: var(--color-body);
+            box-sizing: border-box;
         }
 
-        header {
-            background-color: var(--color-body);
-            border: 1px solid var(--text);
-            padding: 10px;
-            color: white;
-            text-align: center;
+        body, html {
+            height: 100%;
+            font-family: Poppins-Regular, sans-serif;
             display: flex;
             justify-content: center;
-            gap: 10px;
-            border-radius: 10px;
-            opacity: 0;
-            margin: 10px;
-            animation: fadeInHeader 0.4s ease-out 0.4s forwards;
-        }
-
-        header .button-group {
-            display: flex;
-            gap: 10px;
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeInBody 0.4s ease-out 0.4s forwards;
-            height: 100vh;
-            background: var(--color-body);
-        }
-
-        button {
-            background-color: var(--button);
-            border: 1px solid var(--text);
-            color: var(--label);
-            padding: 10px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        label {
-            color: var(--label);
-        }
-
-        button:hover {
-            background-color: #333;
-        }
-
-        button:active {
-            transform: scale(0.97);
-        }
-
-        .close-button {
-            background-color: red;
-            -webkit-text-stroke-width: thin;
-        }
-
-        .close-button:hover {
-            background-color: #c50000;
-        }
-
-        .close-button:active {
-            transform: scale(0.97);
+            align-items: center;
+            background: linear-gradient(135deg, #6d83f2, #a867f5);
+            color: #ffffff;
         }
 
         .container {
-            border: 1px solid var(--text);
-            border-radius: 20px;
-            background-color: var(--color-body);
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6d83f2, #a867f5);
+            text-align: center;
             padding: 20px;
-            margin: 10px;
-            display: flex;
-            flex-direction: column;
-            color: white;
-            opacity: 0;
-            min-height: 400px;
-            max-height: 400px;
-            overflow-y: auto;
-            animation: fadeInContent 0.5s ease-out forwards;
         }
 
-        .fade-out {
-            animation: fadeOutContent 0.5s ease-out forwards;
+        .header h1 {
+            font-family: Poppins-Bold;
+            font-size: 24px;
+            color: #ffffff;
         }
 
-        @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-
-            input[type='checkbox'],
-            input[type='radio'] {
-                --active: rgb(255, 0, 0);
-                --active-inner: black;
-                --border: #bbc1e1;
-                --border-hover: rgb(255, 0, 0);
-                --background: #fff;
-                --disabled: #f6f8ff;
-                --disabled-inner: #e1e6f9;
-                appearance: none;
-                height: 21px;
-                outline: none;
-                display: inline-block;
-                vertical-align: top;
-                position: relative;
-                margin: 0;
-                cursor: pointer;
-                border: 1px solid var(--bc, var(--border));
-                background: var(--b, var(--background));
-                transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
-            }
-
-            input[type='checkbox']:after,
-            input[type='radio']:after {
-                content: '';
-                display: block;
-                left: 0;
-                top: 0;
-                position: absolute;
-                transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
-            }
-
-            input[type='checkbox']:checked,
-            input[type='radio']:checked {
-                --b: var(--active);
-                --bc: var(--active);
-                --d-o: 0.3s;
-                --d-t: 0.6s;
-                --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
-            }
-
-            input[type='checkbox']:disabled,
-            input[type='radio']:disabled {
-                --b: var(--disabled);
-                cursor: not-allowed;
-                opacity: 0.9;
-            }
-
-            input[type='checkbox']:disabled:checked,
-            input[type='radio']:disabled:checked {
-                --b: var(--disabled-inner);
-                --bc: var(--border);
-            }
-
-            input[type='checkbox']:disabled+label,
-            input[type='radio']:disabled+label {
-                cursor: not-allowed;
-            }
-
-            input[type='checkbox']:hover:not(:checked):not(:disabled),
-            input[type='radio']:hover:not(:checked):not(:disabled) {
-                --bc: var(--border-hover);
-            }
-
-            input[type='checkbox']:focus,
-            input[type='radio']:focus {
-                box-shadow: 0 0 0 var(--focus);
-            }
-
-            input[type='checkbox']:not(.switch),
-            input[type='radio']:not(.switch) {
-                width: 21px;
-            }
-
-            input[type='checkbox']:not(.switch):after,
-            input[type='radio']:not(.switch):after {
-                opacity: var(--o, 0);
-            }
-
-            input[type='checkbox']:not(.switch):checked,
-            input[type='radio']:not(.switch):checked {
-                --o: 1;
-            }
-
-            input[type='checkbox']+label,
-            input[type='radio']+label {
-                font-size: 14px;
-                line-height: 21px;
-                display: inline-block;
-                vertical-align: top;
-                cursor: pointer;
-                margin-left: 4px;
-            }
-
-            input[type='checkbox']:not(.switch) {
-                border-radius: 7px;
-            }
-
-            input[type='checkbox']:not(.switch):after {
-                width: 5px;
-                height: 9px;
-                border: 2px solid var(--active-inner);
-                border-top: 0;
-                border-left: 0;
-                left: 7px;
-                top: 4px;
-                transform: rotate(var(--r, 20deg));
-            }
-
-            input[type='checkbox']:not(.switch):checked {
-                --r: 43deg;
-            }
-
-            input[type='checkbox'].switch {
-                width: 38px;
-                border-radius: 11px;
-            }
-
-            input[type='checkbox'].switch:after {
-                left: 2px;
-                top: 2px;
-                border-radius: 50%;
-                width: 15px;
-                height: 15px;
-                background: var(--ab, var(--border));
-                transform: translateX(var(--x, 0));
-            }
-
-            input[type='checkbox'].switch:checked {
-                --ab: var(--active-inner);
-                --x: 17px;
-            }
-
-            input[type='checkbox'].switch:disabled:not(:checked):after {
-                opacity: 0.6;
-            }
-
-            input[type='radio'] {
-                border-radius: 50%;
-            }
-
-            input[type='radio']:after {
-                width: 19px;
-                height: 19px;
-                border-radius: 50%;
-                background: var(--active-inner);
-                opacity: 0;
-                transform: scale(var(--s, 0.7));
-            }
-
-            input[type='radio']:checked {
-                --s: 0.5;
-            }
-
-            input[type="range"] {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 100%;
-                height: 10px;
-                background: var(--label);
-                border-radius: 5px;
-                outline: none;
-                opacity: 0.7;
-                transition: opacity 0.2s;
-                inline-size: 40%;
-                display: block;
-                margin-bottom: 10px;
-            }
-
-            input[type="range"]::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 20px;
-                height: 20px;
-                background: var(--b, var(--background));
-                background: rgb(255, 0, 0);
-                cursor: pointer;
-                border-radius: 50%;
-            }
-
-            input[type="range"]::-moz-range-thumb {
-                width: 20px;
-                height: 20px;
-                background: rgb(255, 0, 0);
-                cursor: pointer;
-                border-radius: 50%;
-            }
+        .form-container {
+            padding: 30px;
         }
 
-        .check {
-            margin: 8px 0;
-            position: relative;
+        .input-group {
+            margin-bottom: 20px;
         }
 
-        @keyframes fadeInHeader {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333333;
         }
 
-        @keyframes fadeInBody {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        .input-group input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333333;
+            outline: none;
+            transition: border-color 0.3s ease;
         }
 
-        @keyframes fadeInContent {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        .input-group input:focus {
+            border-color: #6d83f2;
         }
 
-        @keyframes fadeOutContent {
-            from {
-                opacity: 1;
-            }
+        .button-container {
+            text-align: center;
+        }
 
-            to {
-                opacity: 0;
-            }
+        .button-container button {
+            background: linear-gradient(135deg, #6d83f2, #a867f5);
+            color: #ffffff;
+            font-family: Poppins-Bold;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background: #5b6fe3;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: #f8f8f8;
+            color: #333333;
+            font-size: 12px;
         }
     </style>
 
